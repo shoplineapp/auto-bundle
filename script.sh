@@ -14,11 +14,12 @@ latest_version=$(git branch -r | grep 'release/' | cut -d '/' -f3 | sort -t. -k 
 origin_branch="release/${latest_version}"
 git checkout $origin_branch
 
-#origin_branch=$(git rev-parse --abbrev-ref HEAD)
 branch=feature/${GEM_NAME}-version-${TAG}
 git checkout -b "${branch}"
 
-if [ -n "$SUBMODULE" ]; then
+submodule=$(cat Gemfile | grep $GEM_NAME | grep 'path')
+
+if [ -n "$submodule" ]; then
   cd "${GEM_NAME}"
   git fetch
   git checkout "$TAG"
