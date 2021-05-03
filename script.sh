@@ -19,7 +19,8 @@ submodule=$(cat Gemfile | grep $GEM_NAME | grep 'path')
 
 if [ -n "$submodule" ]; then
   cd "${GEM_NAME}"
-  ssh -i /opt/atlassian/pipelines/agent/ssh/id_rsa git submodule update --init
+  ssh-copy-id -i /opt/atlassian/pipelines/agent/ssh/id_rsa git@bitbucket.org
+  git submodule update --init
   git fetch origin
   git checkout "$TAG"
   cd -
