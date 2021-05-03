@@ -12,8 +12,7 @@ git config http.${BITBUCKET_GIT_HTTP_ORIGIN}.proxy http://host.docker.internal:2
 
 git fetch
 latest_version=$(git branch -r | grep 'release/' | cut -d '/' -f3 | sort -t. -k 1,1nr -k 2,2nr -k 3,3nr | head -n 1)
-origin_branch="release/${latest_version}"
-git checkout $origin_branch
+git checkout release/"${latest_version}"
 
 branch=feature/${GEM_NAME}-version-${TAG}
 git checkout -b "${branch}"
