@@ -9,4 +9,4 @@ RUN apt-get update \
 
 COPY script.sh .
 
-CMD ["/bin/sh", "script.sh"]
+CMD ["/bin/sh", "/script.sh"]
