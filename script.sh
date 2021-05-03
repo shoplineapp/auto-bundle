@@ -19,6 +19,7 @@ submodule=$(cat Gemfile | grep $GEM_NAME | grep 'path')
 
 if [ -n "$submodule" ]; then
   cd "${GEM_NAME}"
+  git submodule update --init
   git fetch origin
   git checkout "$TAG"
   cd -
