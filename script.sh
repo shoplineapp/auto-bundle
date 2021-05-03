@@ -7,8 +7,6 @@ if [ -z "$BITBUCKET_CLIENT_ID" ] || [ -z "$BITBUCKET_SECRET" ]; then
     exit 1
 fi
 
-cat /opt/atlassian/pipelines/agent/ssh/id_rsa > /root/.ssh/id_rsa && chmod 400 /root/.ssh/id_rsa
-
 git fetch
 latest_version=$(git branch -r | grep 'release/' | cut -d '/' -f3 | sort -t. -k 1,1nr -k 2,2nr -k 3,3nr | head -n 1)
 origin_branch="release/${latest_version}"
