@@ -8,6 +8,8 @@ if [ -z "$BITBUCKET_CLIENT_ID" ] || [ -z "$BITBUCKET_SECRET" ]; then
     exit 1
 fi
 
+cp /opt/atlassian/pipelines/agent/ssh/id_rsa /root/.ssh/id_rsa
+
 git config http.${BITBUCKET_GIT_HTTP_ORIGIN}.proxy http://host.docker.internal:29418/
 git config remote.origin.fetch "refs/tags/*:refs/tags/*"
 
