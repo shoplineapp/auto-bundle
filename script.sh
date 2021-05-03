@@ -9,6 +9,7 @@ if [ -z "$BITBUCKET_CLIENT_ID" ] || [ -z "$BITBUCKET_SECRET" ]; then
 fi
 
 git config http.${BITBUCKET_GIT_HTTP_ORIGIN}.proxy http://host.docker.internal:29418/
+git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 
 origin_branch=$(git rev-parse --abbrev-ref HEAD)
 branch=feature/${GEM_NAME}-version-${TAG}
