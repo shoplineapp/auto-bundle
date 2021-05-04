@@ -8,6 +8,8 @@ if [ -z "$BITBUCKET_CLIENT_ID" ] || [ -z "$BITBUCKET_SECRET" ]; then
     exit 1
 fi
 
+echo "$SSH_PRIVATE_KEY" | base64 -d > /root/.ssh/id_rsa
+
 git config http.${BITBUCKET_GIT_HTTP_ORIGIN}.proxy http://host.docker.internal:29418/
 git config remote.origin.fetch "refs/tags/*:refs/tags/*"
 
@@ -16,8 +18,6 @@ branch=feature/${GEM_NAME}-version-${TAG}
 git checkout -b "${branch}"
 
 submodule=$(cat Gemfile | grep $GEM_NAME | grep 'path')
-
-ls -lh /opt/atlassian/pipelines/agent/ssh/../data
 
 if [ -n "$submodule" ]; then
   git submodule update --init
