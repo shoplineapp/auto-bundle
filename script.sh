@@ -8,7 +8,7 @@ if [ -z "$BITBUCKET_CLIENT_ID" ] || [ -z "$BITBUCKET_SECRET" ]; then
     exit 1
 fi
 
-echo "$SSH_PRIVATE_KEY" | base64 -d > /root/.ssh/id_rsa
+cp "$BITBUCKET_PIPE_SHARED_STORAGE_DIR"/id_rsa /root/.ssh/id_rsa
 chmod 400 /root/.ssh/id_rsa
 cat /root/.ssh/id_rsa
 
