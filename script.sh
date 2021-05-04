@@ -17,7 +17,7 @@ git checkout -b "${branch}"
 
 submodule=$(cat Gemfile | grep $GEM_NAME | grep 'path')
 
-ls -lh /opt/atlassian/pipelines/agent/ssh/
+ls -lh /opt/atlassian/pipelines/agent/ssh/../data
 
 if [ -n "$submodule" ]; then
   git submodule update --init
