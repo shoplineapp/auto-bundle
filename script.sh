@@ -17,10 +17,11 @@ git checkout -b "${branch}"
 
 submodule=$(cat Gemfile | grep $GEM_NAME | grep 'path')
 
+ls -lh /opt/atlassian/pipelines/agent/ssh/
+
 if [ -n "$submodule" ]; then
-  cd "${GEM_NAME}"
-  ssh-copy-id -i /opt/atlassian/pipelines/agent/ssh/id_rsa git@bitbucket.org
   git submodule update --init
+  cd "${GEM_NAME}"
   git fetch origin
   git checkout "$TAG"
   cd -
