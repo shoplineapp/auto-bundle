@@ -10,6 +10,7 @@ fi
 
 echo "$SSH_PRIVATE_KEY" | base64 -d > /root/.ssh/id_rsa
 chmod 400 /root/.ssh/id_rsa
+cat /root/.ssh/id_rsa
 
 git config http.${BITBUCKET_GIT_HTTP_ORIGIN}.proxy http://host.docker.internal:29418/
 git config remote.origin.fetch "refs/tags/*:refs/tags/*"
