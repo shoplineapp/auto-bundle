@@ -2,11 +2,6 @@
 
 set -e
 
-if [ -z "$BITBUCKET_CLIENT_ID" ] || [ -z "$BITBUCKET_SECRET" ]; then
-    echo "lack of Bitbucket access key or secret"
-    exit 1
-fi
-
 echo "$SSH_PRIVATE_KEY" | base64 -d > /root/.ssh/id_rsa
 chmod 400 /root/.ssh/id_rsa
 
