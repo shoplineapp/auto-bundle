@@ -1,9 +1,6 @@
-FROM ruby:2.5.7-slim-stretch
+FROM alpine:3.13.5
 
-RUN apt-get update \
-    && apt-get install git ssh jq curl dpkg-dev libgdbm-dev bison -yqq \
-    && apt-get clean autoclean \
-    && apt-get autoremove -y \
+RUN apk add git openssh \
     && mkdir -p /root/.ssh/ \
     && ssh-keyscan bitbucket.org > /root/.ssh/known_hosts
 
