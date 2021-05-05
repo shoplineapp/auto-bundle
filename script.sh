@@ -31,3 +31,4 @@ fi
 
 git commit -m "feat: update ${GEM_NAME} version"
 git push origin "${branch}"
+git checkout -
