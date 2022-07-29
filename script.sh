@@ -27,7 +27,8 @@ if [ -n "$submodule" ]; then
   git add "${GEM_NAME}" Gemfile.lock
 else
   sed -i -e "s/${GEM_NAME} (\([[:digit:]]\|\.\)\+)/${GEM_NAME} (${TAG})/g" Gemfile.lock
-  sed -i -e "s/^\(gem '${GEM_NAME}'.\+\), tag: '\([[:digit:]]\|\.\)\+'/\1, tag: '${TAG}'/g" Gemfile
+  sed -i -e "s/^\(\#[[:space:]]*\)*\(gem '${GEM_NAME}'.\+\), tag: '\([[:digit:]]\|\.\)\+'/\2, tag: '${TAG}'/g" Gemfile
+  sed -i -e "s/^\(gem '${GEM_NAME}'.\+\, ref: \)/#\1/" Gemfile # comment refs
   git add Gemfile Gemfile.lock
 fi
 
