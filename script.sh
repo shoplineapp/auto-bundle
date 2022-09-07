@@ -40,7 +40,7 @@ for module in $modules; do
   fi
 done
 
-#bundle install --path vendor/bundle
+bundle install --without test  #--path vendor/bundle --without test
 git add Gemfile Gemfile.lock
 
 git commit -m "feat: bundle version for $releaseTag"

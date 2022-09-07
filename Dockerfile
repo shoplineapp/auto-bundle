@@ -1,6 +1,7 @@
-FROM alpine:3.13.5
+FROM ruby:2.5.7
 
-RUN apk add git openssh \
+RUN apt update \
+    && apt install -y git ssh \
     && mkdir -p /root/.ssh/ \
     && ssh-keyscan bitbucket.org > /root/.ssh/known_hosts
 
