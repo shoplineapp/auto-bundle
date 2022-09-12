@@ -35,8 +35,8 @@ for module in $modules; do
     git add "${moduleName}"
   else
     sed -i -e "s/${moduleName} (\([[:digit:]]\|\.\)\+)/${moduleName} (${moduleVersion})/g" Gemfile.lock
-    sed -i -e "s/^\(\#[[:space:]]*\)*\(gem '${moduleName}'.\+\), tag: '\([[:digit:]]\|\.\)\+'/\2, tag: '${moduleVersion}'/g" Gemfile
-    sed -i -e "s/^\(gem '${moduleName}'.\+\, ref: \)/#\1/" Gemfile # comment refs
+    sed -i -e "s/^\(\#[[:space:]]*\)*\(gem .\+\/${moduleName}\.git.\), tag: '\([[:digit:]]\|\.\)\+'/\2, tag: '${moduleVersion}'/g" Gemfile
+    sed -i -e "s/^\(gem .\+\/${moduleName}\.git.\, ref: \)/#\1/" Gemfile # comment refs
   fi
 done
 
